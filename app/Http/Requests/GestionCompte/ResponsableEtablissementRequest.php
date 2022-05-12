@@ -12,25 +12,25 @@ class ResponsableEtablissementRequest extends FormRequest{
     public function rules()  {
         if ($this->isMethod('post')) {
             return [
-            'nom' => 'required|string|regex:/^[A-Za-z ]*$/i',
-            'prenom' => 'required|string|regex:/^[A-Za-z ]*$/i',
-            'CIN' => 'required|numeric',
-            'adresse' => 'required|string',
-            'photo' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => 'required|email|max:50',
-            'mot_de_passe' => 'required|string|min:6',
-            'numero_telephone'=> 'required|integer',
+                'nom_etablissement' => 'required|string|regex:/^[A-Za-z ]*$/i',
+                'nom_responsable' => 'required|string|regex:/^[A-Za-z ]*$/i',
+                'numero_fixe' => 'sometimes|nullable|numeric|unique:client_dechets,CIN',
+                'numero_telephone'=> 'required|string',
+                'mot_de_passe' => 'required|string|min:6',
+                'email' => 'required|unique:client_dechets,email,|email|max:50',
+                'adresse' => 'required|string',
+                'QRcode' => 'required|string'
             ];
          }else if($this->isMethod('PUT')){
              return [
-            // 'nom' => 'required|string|regex:/^[A-Za-z ]*$/i',
-            // 'prenom' => 'required|string|regex:/^[A-Za-z ]*$/i',
-            // 'CIN' => 'required|numeric',
-            // 'photo' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // 'email' => 'required|email|max:50',
-            // 'mot_de_passe' => 'required|string|min:6',
-            // 'numero_telephone'=> 'required|integer',
-
+                'nom_etablissement' => 'required|string|regex:/^[A-Za-z ]*$/i',
+                'nom_responsable' => 'required|string|regex:/^[A-Za-z ]*$/i',
+                'numero_fixe' => 'sometimes|nullable|numeric|unique:client_dechets,CIN',
+                'numero_telephone'=> 'required|string',
+                'mot_de_passe' => 'required|string|min:6',
+                'email' => 'required|unique:client_dechets,email,|email|max:50',
+                'adresse' => 'required|string',
+                'QRcode' => 'required|string'
              ];
         }
 

@@ -14,23 +14,28 @@ class Client_dechetRequest extends FormRequest{
     public function rules()  {
         if ($this->isMethod('post')) {
             return [
-            'nom' => 'required|string|regex:/^[A-Za-z ]*$/i',
-            'prenom' => 'required|string|regex:/^[A-Za-z ]*$/i',
-            'CIN' => 'required|numeric|unique:client_dechets,CIN',
-            'numero_telephone'=> 'required|integer',
-            'mot_de_passe' => 'required|string|min:6',
-            'email' => 'required|unique:client_dechets,email,|email|max:50',
-            'photo' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'adresse' => 'required|string'
+                'nom_entreprise' => 'required|string|regex:/^[A-Za-z ]*$/i',
+                'matricule_fiscale' => 'required|string|regex:/^[A-Za-z0-9 ]*$/i',
+                'nom_responsable' => 'required|string|regex:/^[A-Za-z ]*$/i',
+                'numero_fixe' => 'sometimes|nullable|numeric|unique:client_dechets,CIN',
+                'numero_telephone'=> 'required|string',
+                'mot_de_passe' => 'required|string|min:6',
+                'email' => 'required|unique:client_dechets,email,|email|max:50',
+                'adresse' => 'required|string',
+                'QRcode' => 'required|string'
+
             ];
         }else if($this->isMethod('PUT')){
              return [
-            'nom' => 'required|string|regex:/^[A-Za-z ]*$/i',
-            'prenom' => 'required|string|regex:/^[A-Za-z ]*$/i',
-            'CIN' => "required|numeric|unique:client_dechets,CIN,".\Request::instance()->id,
-            'numero_telephone'=> 'required|regex:/^([1-9])([0-9]){7,10}$/',
-            'email' => 'required','email',
-            'mot_de_passe' => 'required|string|min:6',
+                'nom_entreprise' => 'required|string|regex:/^[A-Za-z ]*$/i',
+                'matricule_fiscale' => 'required|string|regex:/^[A-Za-z0-9 ]*$/i',
+                'nom_responsable' => 'required|string|regex:/^[A-Za-z ]*$/i',
+                'numero_fixe' => 'sometimes|nullable|numeric|unique:client_dechets,CIN',
+                'numero_telephone'=> 'required|string',
+                'mot_de_passe' => 'required|string|min:6',
+                'email' => 'required|unique:client_dechets,email,|email|max:50',
+                'adresse' => 'required|string',
+                'QRcode' => 'required|string'
          ];
         }
 

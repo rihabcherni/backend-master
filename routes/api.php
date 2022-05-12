@@ -21,7 +21,6 @@ use App\Http\Controllers\Auth\ResponsableEtablissement\AuthResponsableEtablissem
 
 
 /**--------------  **************           debut web       ************************** -------------------**/
-
     /** -------------  **************          debut recherche    ************************** ------------------**/
             Route::get('/recherche-etablissement-zone-travail-nom/{nom_zone}', [RechercheController::class, 'rechercheEtablissementNomZone']);
             Route::get('/recherche-etablissement-zone-travail-id/{zone_travail_id}', [RechercheController::class, 'rechercheEtablissementIDZone']);
@@ -94,8 +93,6 @@ use App\Http\Controllers\Auth\ResponsableEtablissement\AuthResponsableEtablissem
                 Route::post('/updatePassword/{id}',[AuthController::class , 'updatePassword']);
                 Route::post('/forgotPassword',[AuthController::class , 'send']);
 
-
-
                 Route::post('/send-ouvrier',[AuthOuvrierController::class,'send']);
 
             /** -------------  **************         fin authentifiaction      **************************  ------------------**/
@@ -104,8 +101,6 @@ use App\Http\Controllers\Auth\ResponsableEtablissement\AuthResponsableEtablissem
                 //     $clientIP = request()->ip();
                 //     return $clientIP;
                 // });
-
-
 
                 Route::get('/google-map', [RegionController::class, 'GoogleMap']);
                 Route::get('/google-map/{id}', [RegionController::class, 'GoogleMapId']);
