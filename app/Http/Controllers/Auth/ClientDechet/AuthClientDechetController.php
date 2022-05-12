@@ -42,7 +42,6 @@ class AuthClientDechetController extends BaseController{
         $success['numero_telephone'] =  $client->numero_telephone;
         $success['numero_fixe'] =  $client->numero_fixe;
         $success['email'] =  $client->email;
-        $success['mot_de_passe'] =  Crypt::encryptString($client->mot_de_passe);
         $success['created_at'] =  $client->created_at->format('d/m/y H:i:s');
         return $this->handleResponse($success, 'client successfully registered!');
     }
@@ -158,6 +157,6 @@ class AuthClientDechetController extends BaseController{
 
     }
 
-   
+
 
 }

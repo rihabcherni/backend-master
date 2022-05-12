@@ -38,12 +38,11 @@ class AuthResponsableEtablissementController extends BaseController{
         $success['numero_fixe'] =  $responsable->numero_fixe;
         $success['numero_telephone'] =  $responsable->numero_telephone;
         $success['email'] =  $responsable->email;
-        $success['mot_de_passe'] =  $responsable->mot_de_passe;
-        $success['QRcode'] = $reponsable->QRcode;
+        $success['QRcode'] = $responsable->QRcode;
         $success['created_at'] =  $responsable->created_at->format('d/m/y H:i:s');
         return $this->handleResponse($success, 'responsable successfully registered!');
     }
-    
+
     public function loginResponsableEtablissement(Request $request){
         $validator= Validator::make($request->all(),[
             'email' =>['required','email','exists:responsable_etablissements'],
@@ -154,5 +153,5 @@ class AuthResponsableEtablissementController extends BaseController{
 
     }
 
-    
+
 }

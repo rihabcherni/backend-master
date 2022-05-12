@@ -35,7 +35,6 @@ class ResponsablePersonnelController extends BaseController
         $responsable_personnel=Responsable_personnel::where('email',$request->email)->first();
         $success['nom']= $responsable_personnel->nom;
         $success['prenom']= $responsable_personnel->prenom;
-        $success['mot_de_passe']= Crypt::encryptString($responsable_personnel->mot_de_passe);
         $success['photo']= $responsable_personnel->photo;
         $success['CIN']= $responsable_personnel->CIN;
         $success['email']= $responsable_personnel->email;

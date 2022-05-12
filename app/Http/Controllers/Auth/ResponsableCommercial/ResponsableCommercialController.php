@@ -36,7 +36,6 @@ class ResponsableCommercialController extends BaseController
         $responsable_commercial=Responsable_commercial::where('email',$request->email)->first();
         $success['nom']= $responsable_commercial->nom;
         $success['prenom']= $responsable_commercial->prenom;
-        $success['mot_de_passe']= Crypt::encryptString($responsable_commercial->mot_de_passe);
         $success['photo']= $responsable_commercial->photo;
         $success['CIN']= $responsable_commercial->CIN;
         $success['email']= $responsable_commercial->email;

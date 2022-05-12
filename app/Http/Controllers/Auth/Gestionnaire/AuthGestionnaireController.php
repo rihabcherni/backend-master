@@ -37,7 +37,6 @@ class AuthGestionnaireController extends BaseController{
         $success['adresse'] =  $gestionnaire->adresse;
         $success['numero_telephone'] =  $gestionnaire->numero_telephone;
         $success['email'] =  $gestionnaire->email;
-        $success['mot_de_passe'] =  Crypt::encryptString($gestionnaire->mot_de_passe);
         $success['QRcode'] = $gestionnaire->QRcode;
         $success['created_at'] =  $gestionnaire->created_at->format('d/m/y H:i:s');
         return $this->handleResponse($success, 'gestionnaire successfully registered!');

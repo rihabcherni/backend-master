@@ -46,7 +46,6 @@ class AuthOuvrierController extends BaseController{
         $success['CIN'] =  $ouvrier->CIN;
         $success['numero_telephone'] =  $ouvrier->numero_telephone;
         $success['email'] =  $ouvrier->email;
-        $success['mot_de_passe'] =  $ouvrier->mot_de_passe;
         $success['created_at'] =  $ouvrier->created_at->format('d/m/y H:i:s');
         return $this->handleResponse($success, 'ouvrier successfully registered!');
     }
@@ -165,9 +164,9 @@ class AuthOuvrierController extends BaseController{
             'photo' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $ouvrier=auth()->guard('ouvrier')->user();
-        
+
         if($ouvrier !=null){
-            
+
             if($request->hasFile('photo')){
                 $image = $request->file('photo');
                 $destinationPath = 'storage/images/ouvrier';
@@ -194,7 +193,7 @@ class AuthOuvrierController extends BaseController{
 
     public function sendImage(){
         $ouvrier=auth()->guard('ouvrier')->user();
-        
+
         if($ouvrier !=null){
             if($ouvrier->photo!=null){
                 $destination = 'storage/images/ouvrier/'.$ouvrier->photo;
@@ -213,9 +212,9 @@ class AuthOuvrierController extends BaseController{
 
     public function destroyImage(){
         $ouvrier=auth()->guard('ouvrier')->user();
-        
+
         if($ouvrier !=null){
-            
+
             $destination = 'storage/images/ouvrier/'.$ouvrier->photo;
                 if(File::exists($destination)){
                     File::delete($destination);
