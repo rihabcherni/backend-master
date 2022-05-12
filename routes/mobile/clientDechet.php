@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\API\ClientDechet\ClientDechetController;
-use App\Http\Controllers\Auth\ClientDechet\AuthClientDechetController;
-use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\API\ClientDechet\ClientDechetController;
+    use App\Http\Controllers\Auth\ClientDechet\AuthClientDechetController;
+    use Illuminate\Support\Facades\Route;
+
+    use App\Http\Controllers\ConversationController;
+    use App\Http\Controllers\MessageController;
 
     Route::group(['prefix' => 'auth-client-dechet'], function () {
 
@@ -17,9 +20,9 @@ use Illuminate\Support\Facades\Route;
                     Route::post('/send',[AuthClientDechetController::class,'send']);
 
                     Route::get('/commande-client',[ClientDechetController::class,'ClientCommande']);
+
                     Route::get('/conversation' , [ConversationController::class , 'index']);
                     Route::post('/conversation' , [ConversationController::class , 'store']);
-                    Route::post('/conversation/checkConversation' , [ConversationController::class , 'checkConversation']);
                     Route::post('/conversation/read' , [ConversationController::class , 'makeConversationAsReaded']);
                     Route::post('/message' , [MessageController::class , 'store']);
 

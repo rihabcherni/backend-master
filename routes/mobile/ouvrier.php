@@ -4,6 +4,11 @@
     use App\Http\Controllers\API\Dashboard\RegionController;
     use App\Http\Controllers\Auth\Ouvrier\AuthOuvrierController;
 
+    use App\Http\Controllers\API\Ouvrier\ViderController;
+
+    use App\Http\Controllers\ConversationController;
+    use App\Http\Controllers\MessageController;
+
     Route::group(['prefix' => 'auth-ouvrier'], function () {
         Route::post('/register' , [AuthOuvrierController::class , 'registerOuvrier']);
         Route::post('/login',[AuthOuvrierController::class, 'loginOuvrier']);
@@ -18,14 +23,18 @@
                     Route::post('/destroyImage',[AuthOuvrierController::class,'destroyImage']);
                     Route::post('/updateImage',[AuthOuvrierController::class,'updateImage']);
                     Route::get('/camion',[RegionController::class, 'OuvrierCamion']);
+
                     Route::get('/conversation' , [ConversationController::class , 'index']);
                     Route::post('/conversation' , [ConversationController::class , 'store']);
-                    Route::post('/conversation/checkConversation' , [ConversationController::class , 'checkConversation']);
                     Route::post('/conversation/read' , [ConversationController::class , 'makeConversationAsReaded']);
                     Route::post('/message' , [MessageController::class , 'store']);
+
                     Route::get('/profile' , function(){
                         return auth()->guard('ouvrier')->user();
                     });
+                    Route::get('/viderPoubelle/{ouvrier}/{poubelle}', [ViderController::class, 'ViderPoubelle']);
+                    Route::post('/viderPoubelleQr/{qr}', [ViderController::class, 'ViderPoubelleQr']);
+                    Route::get('/viderCamion/{depot}', [ViderController::class, 'ViderCamion']);
                 });
         });
     });
