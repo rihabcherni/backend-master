@@ -121,21 +121,21 @@ class ViderController extends BaseController{
             ],404);
         }
         $bloc_etablissement = Bloc_etablissement::find($etage_etablissement->bloc_etablissement_id);
-        
+
         if(!$bloc_etablissement){
             return response([
                 'message' => 'bloc_etablissement introuvable'
             ],404);
         }
-        
+
         $etablissement = Etablissement::find($bloc_etablissement->etablissement_id);
         if(!$etablissement){
             return response([
                 'message' => 'etablissement introuvable'
             ],404);
         }
-        return response([        
-            
+        return response([
+            "id"=> $poubelle->id,
             "nom_etablissement"=>$etablissement->nom_etablissement,
             "nom_etage_etablissement"  =>$etage_etablissement->nom_etage_etablissement,
             "nbr_personnes"=>$etablissement->nbr_personnes,
